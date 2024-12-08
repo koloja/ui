@@ -11,5 +11,5 @@
         "rootDir": "src",
         "resolveJsonModule": true
     },
-    "exclude": ["site"]
+    "exclude": ["site", "components"]
 }
