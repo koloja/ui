@@ -2,21 +2,9 @@ import logger from '../lib/logger';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import inquirer from 'inquirer';
-
-interface ConfigSchema {
-    $schema: string;
-    src: boolean;
-    path: string;
-    aliases: {
-        root: string;
-        components: string;
-        lib: string;
-        globals: string;
-    }
-};
+import configPath, {ConfigSchema} from '../lib/configPath';
 
 const init = async () => {
-    const configPath = './ui.config.json';
     try {
         await fs.access(configPath);
         return logger.error('A config file already exists.');
