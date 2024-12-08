@@ -1,0 +1,24 @@
+{
+    "name": "site",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "dev": "next dev -p 2121",
+        "build": "next build",
+        "start": "next start -p 80",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "next": "15.0.4"
+    },
+    "devDependencies": {
+        "typescript": "^5",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "eslint": "^8",
+        "eslint-config-next": "15.0.4"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "$schema": "https://assets.koloja.dev/schema.json",
+    "src": true,
+    "path": "@/*",
+    "aliases": {
+        "root": "@/app",
+        "components": "@/components",
+        "lib": "@/lib",
+        "globals": "@/app/app/globls.tsx"
+    }
+}

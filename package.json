@@ -1,0 +1,25 @@
+{
+    "name": "ui",
+    "version": "0.0.1",
+    "description": "another shitty ui libary",
+    "main": "./src/index.ts",
+    "bin": {
+        "koloja": "./dist/index.js"
+    },
+    "scripts": {
+        "test": "tsx ."
+    },
+    "author": "koloja",
+    "license": "MIT",
+    "dependencies": {
+        "chalk": "^2.4.2",
+        "commander": "^12.1.0",
+        "inquirer": "^12.2.0"
+    },
+    "devDependencies": {
+        "@types/inquirer": "^9.0.7",
+        "@types/node": "^22.10.1",
+        "tsx": "^4.19.2",
+        "typescript": "^5.7.2"
+    }
+}
