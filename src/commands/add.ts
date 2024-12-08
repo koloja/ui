@@ -1,10 +1,10 @@
 import logger from '../lib/logger';
 import fs from 'node:fs/promises';
-import path from 'node:path';
-import inquirer from 'inquirer';
 import configPath, {ConfigSchema} from '../lib/configPath';
 
-const componentsLink = 'https://raw.githubusercontent.com/koloja/ui/refs/heads/main/components/[COMPONENT]'
+const exists = async (file: string): Promise<boolean> => {try {await fs.access(file); return true} catch {return false}};
+
+const componentsLink = 'https://raw.githubusercontent.com/koloja/ui/refs/heads/main/site/src/components/[COMPONENT]'
 const components: {[key: string]: string} = {
     container: 'Container.tsx'
 };
@@ -21,14 +21,16 @@ const add = async (component: string | undefined) => {
         const tsconfig = JSON.parse(rawTSConfig);
         if (!tsconfig?.compilerOptions?.paths[config?.path][0]) throw new Error('No path could be found inside the Typescript config!');
         const realPath = tsconfig?.compilerOptions?.paths[config?.path][0].replace('*', '');
-
+        const componentsPath = config.aliases.components.replace(config.path.replace('*', ''), realPath) + '/';
+        const doesExist = await exists(componentsPath + components[component]);
+        if (doesExist) throw new Error('Component already exists.');
         const response = await fetch(componentsLink.replace('[COMPONENT]', components[component]));
         const data = await response.text();
-
-        await fs.writeFile(config.aliases.components.replace(config.path.replace('*', '') + components[component], realPath), data, 'utf-8')
+        await fs.mkdir(componentsPath, {recursive: true});
+        await fs.writeFile(componentsPath + components[component], data, 'utf-8');
+        logger.event(`Finished creating component '${component}'`);
     } catch (error) {
         if (error instanceof Error) {
-            console.log(error);
             if (error.message.includes(configPath)) return logger.error(`No config file could be found, run \'npx koloja@latest init\'`);
             else return logger.error(`Could not create component: ${error.message}`);
         } else return logger.error('Something went wrong!');
