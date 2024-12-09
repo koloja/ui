@@ -39,7 +39,7 @@ const add = async (component: string | undefined) => {
         logger.event(`Finished creating component '${component}'`);
     } catch (error) {
         if (error instanceof Error) {
-            if (error.message.includes(configPath)) return logger.error(`No config file could be found, run \'npx koloja@latest init\'`);
+            if (error.message.includes(configPath)) return logger.error(`No config file could be found, run \'npx asul@latest init\'`);
             else return logger.error(`Could not create component: ${error.message}`);
         } else return logger.error('Something went wrong!');
     };
