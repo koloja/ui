@@ -12,7 +12,7 @@ const geistMono = localFont({
     weight: '100 900'
 });
 
-export const metadata: Metadata = {title: 'Test App'};
+export const metadata: Metadata = {title: 'ASUL', description: 'another shitty ui libary'};
 
 const RootLayout = ({children}: Readonly<{children: React.ReactNode;}>) => (<html lang='en'><body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body></html>);
 export default RootLayout;

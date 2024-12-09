@@ -10,3 +10,5 @@ const Page: React.FC = () => {
     </Container>);
 
 };
+
+export default Page;

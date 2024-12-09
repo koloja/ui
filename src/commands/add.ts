@@ -14,18 +14,26 @@ const add = async (component: string | undefined) => {
     else if (!components[component]) return logger.error('Invalid component');
     
     try {
+        // will throw error if false
+        // all errors like this are caught
         await fs.access(configPath);
         const rawConfig = await fs.readFile(configPath, 'utf-8');
         const rawTSConfig = await fs.readFile('tsconfig.json', 'utf-8');
         const config: ConfigSchema = JSON.parse(rawConfig);
         const tsconfig = JSON.parse(rawTSConfig);
+
         if (!tsconfig?.compilerOptions?.paths[config?.path][0]) throw new Error('No path could be found inside the Typescript config!');
         const realPath = tsconfig?.compilerOptions?.paths[config?.path][0].replace('*', '');
         const componentsPath = config.aliases.components.replace(config.path.replace('*', ''), realPath) + '/';
-        const doesExist = await exists(componentsPath + components[component]);
-        if (doesExist) throw new Error('Component already exists.');
+        const globalsPath = config.aliases.globals.replace(config.path.replace('*', ''), realPath) + '/';
+        const componentsExists = await exists(componentsPath + components[component]);
+        const globalsExists = await exists(globalsPath);
+
+        if (componentsExists) throw new Error('Component already exists.');
+        if (!globalsExists) throw new Error('No global styles could be found.');
         const response = await fetch(componentsLink.replace('[COMPONENT]', components[component]));
         const data = await response.text();
+
         await fs.mkdir(componentsPath, {recursive: true});
         await fs.writeFile(componentsPath + components[component], data, 'utf-8');
         logger.event(`Finished creating component '${component}'`);

@@ -7,8 +7,6 @@ const Container = styled.main`
     width: 100%;
     max-width: 100vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
     box-sizing: border-box;
     overflow-x: hidden;
 `;

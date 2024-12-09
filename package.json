@@ -1,10 +1,10 @@
 {
-    "name": "ui",
+    "name": "asul",
     "version": "0.0.1",
     "description": "another shitty ui libary",
     "main": "./src/index.ts",
     "bin": {
-        "koloja": "./dist/index.js"
+        "asul": "./dist/index.js"
     },
     "scripts": {
         "test": "tsx ."
