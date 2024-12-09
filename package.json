@@ -1,10 +1,10 @@
 {
     "name": "asul",
-    "version": "0.0.2",
+    "version": "0.0.4",
     "description": "another shitty ui library",
     "main": "./src/index.ts",
     "bin": {
-        "asul": "./dist/index.js"
+        "asul": "dist/index.js"
     },
     "scripts": {
         "test": "tsx .",
