@@ -1,6 +1,2 @@
-*
-!dist/
-!package.json
-!README.md
-!LICENSE.md
-!tsconfig.json
+site/
+src/

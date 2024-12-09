@@ -1,6 +1,6 @@
 {
     "name": "asul",
-    "version": "0.0.4",
+    "version": "0.0.6",
     "description": "another shitty ui library",
     "main": "./src/index.ts",
     "bin": {
