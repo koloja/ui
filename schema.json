@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "$schema": {"type": "string", "format": "uri", "description": "Link to the external schema."},
+        "src": {"type": "boolean", "description": "If the source directory is enabled"},
+        "path": {"type": "string", "description": "Base path for imports"},
+        "aliases": {
+            "type": "object",
+            "description": "Mapping of path aliases",
+            "properties": {
+                "root": {"type": "string", "description": "Alias for the root directory"},
+                "components": {"type": "string", "description": "Alias for the components directory"},
+                "lib": {"type": "string", "description": "Alias for the library directory"},
+                "globals": {"type": "string", "description": "Alias for the globals file"}
+            },
+            "required": ["root", "components", "lib", "globals"],
+            "additionalProperties": false
+        }
+    },
+    "required": ["$schema", "src", "path", "aliases"],
+    "additionalProperties": false
+}

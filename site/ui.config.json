@@ -1,5 +1,5 @@
 {
-    "$schema": "https://assets.koloja.dev/schema.json",
+    "$schema": "https://raw.githubusercontent.com/koloja/ui/refs/heads/main/schema.json",
     "src": true,
     "path": "@/*",
     "aliases": {

@@ -39,7 +39,7 @@ const init = async () => {
         const filteredPath = (answers.path as string).slice(0, -1);
     
         const config: ConfigSchema = {
-            $schema: 'https://assets.koloja.dev/schema.json',
+            $schema: 'https://raw.githubusercontent.com/koloja/ui/refs/heads/main/schema.json',
             src: answers.src,
             path: answers.path,
             aliases: {
