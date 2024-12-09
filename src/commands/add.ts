@@ -1,15 +1,14 @@
 import logger from '../lib/logger';
+import path from 'node:path';
 import fs from 'node:fs/promises';
 import configPath, {ConfigSchema} from '../lib/configPath';
+import getComponents from '../lib/components';
 
 const exists = async (file: string): Promise<boolean> => {try {await fs.access(file); return true} catch {return false}};
-
-const componentsLink = 'https://raw.githubusercontent.com/koloja/ui/refs/heads/main/site/src/components/[COMPONENT]'
-const components: {[key: string]: string} = {
-    container: 'Container.tsx'
-};
+const componentsLink = 'https://raw.githubusercontent.com/koloja/ui/refs/heads/main/site/src/components/[COMPONENT]';
 
 const add = async (component: string | undefined) => {
+    const components = await getComponents();
     if (!component) return logger.error('Please define a component');
     else if (!components[component]) return logger.error('Invalid component');
     
@@ -23,13 +22,21 @@ const add = async (component: string | undefined) => {
         const tsconfig = JSON.parse(rawTSConfig);
 
         if (!tsconfig?.compilerOptions?.paths[config?.path][0]) throw new Error('No path could be found inside the Typescript config!');
-        const realPath = tsconfig?.compilerOptions?.paths[config?.path][0].replace('*', '');
-        const componentsPath = config.aliases.components.replace(config.path.replace('*', ''), realPath) + '/';
-        const globalsPath = config.aliases.globals.replace(config.path.replace('*', ''), realPath) + '/';
+
+        const filteredPath = config.path.replace('/*', '');
+        const realPath = path.join(tsconfig?.compilerOptions?.paths[config?.path][0].replace('*', ''));
+
+        const componentsPath = path.join(realPath, config.aliases.components.split(filteredPath)[1]) + '\\';
+        const globalsPath = path.join(realPath, config.aliases.globals.split(filteredPath)[1]);
+
         const componentsExists = await exists(componentsPath + components[component]);
         const globalsExists = await exists(globalsPath);
-
         if (componentsExists) throw new Error('Component already exists.');
+
+        //// console.log('globals:', globalsPath);
+        //// console.log('real:', realPath);
+        //// console.log('components:', componentsPath);
+
         if (!globalsExists) throw new Error('No global styles could be found.');
         const response = await fetch(componentsLink.replace('[COMPONENT]', components[component]));
         const data = await response.text();

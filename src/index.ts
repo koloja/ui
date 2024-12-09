@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// TODO: This whole CLI needs to be redone
+
 import {Command} from 'commander';
 import pkg from '../package.json';
 import logger from './lib/logger';

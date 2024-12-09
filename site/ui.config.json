@@ -3,9 +3,9 @@
     "src": true,
     "path": "@/*",
     "aliases": {
-        "root": "@/app",
-        "components": "@/components",
-        "lib": "@/lib",
-        "globals": "@/app/app/globls.tsx"
+        "root": "@\\app",
+        "components": "@\\components",
+        "lib": "@\\lib",
+        "globals": "@\\app\\globals.tsx"
     }
 }
