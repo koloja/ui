@@ -1,13 +1,14 @@
 {
     "name": "asul",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "another shitty ui library",
     "main": "./src/index.ts",
     "bin": {
         "asul": "./dist/index.js"
     },
     "scripts": {
-        "test": "tsx ."
+        "test": "tsx .",
+        "build": "tsc"
     },
     "author": "koloja",
     "license": "MIT",
