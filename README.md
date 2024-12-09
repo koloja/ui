@@ -1,6 +1,7 @@
 # ASUL
 
-**ASUL** is another shitty ui library for building what most people call *"websites"*.
+**ASUL** is another shitty ui library for building what most people call *"websites"*.<br/>
+It is basiclly a copy of [shadcn/ui](https://ui.shadcn.com/) just without TailwindCSS aka satan.
 
 ## Features
 
