@@ -14,6 +14,7 @@ const StyledCheckbox = styled(CheckboxPrimitive.Root)`
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 200ms ease;
 
     &[data-state='checked'] {
         background-color: ${styles.colors.text.default};

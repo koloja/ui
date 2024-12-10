@@ -6,6 +6,6 @@
         "root": "@\\app",
         "components": "@\\components",
         "lib": "@\\lib",
-        "globals": "@\\app\\globals.tsx"
+        "globals": "@\\app\\globals"
     }
 }

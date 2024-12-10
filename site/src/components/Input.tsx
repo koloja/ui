@@ -1,6 +1,7 @@
 'use client';
 import styled from 'styled-components';
 import {styles} from '@/app/globals';
+import darken from '@/lib/darken';
 
 const Input = styled.input<{ className?: string }>`
     flex: 1;
@@ -10,11 +11,12 @@ const Input = styled.input<{ className?: string }>`
     border: ${styles.colors.border} ${styles.values.border} solid;
     background-color: inherit;
     padding: 0.5rem 0.75rem;
-    font-size: 1rem;
+    font-size: .88rem;
     color: ${styles.colors.text.default};
+    transition: background-color 200ms ease;
 
     &::placeholder {color: ${styles.colors.text.muted}}
-    @media (min-width: 768px) {font-size: 0.875rem}
+    &:hover, &:focus {background-color: ${darken(styles.colors.muted, 50)}}
 `;
 
 export default Input;

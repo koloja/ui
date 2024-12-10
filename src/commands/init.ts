@@ -28,7 +28,7 @@ const init = async () => {
                 type: 'input',
                 name: 'globals',
                 message: 'Enter the globals path:',
-                default: 'app/globals.tsx'
+                default: 'app/globals'
             },
             {
                 type: 'confirm',

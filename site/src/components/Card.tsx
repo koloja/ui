@@ -16,19 +16,19 @@ const Container = styled.div`
 `;
 
 const Heading = styled.section`
-    display: inherit;
+    display: flex;
     flex-direction: column;
 `;
 
 const Content = styled.section`
-    display: inherit;
+    display: flex;
     flex-direction: column;
     margin-bottom: auto;
     padding: 1.5rem 0;
 `;
 
 const Footer = styled.section`
-    display: inherit;
+    display: flex;
     flex-direction: column;
     gap: .8rem;
 `;
@@ -40,6 +40,7 @@ const Title = styled.h4`
 const Description = styled.small`
     color: ${styles.colors.text.muted};
 `;
+
 
 Container.displayName = 'CardContainer';
 Heading.displayName = 'CardHeading';

@@ -41,6 +41,9 @@ const add = async (component: string | undefined) => {
         const response = await fetch(componentsLink + components[component]);
         const data = await response.text();
 
+        let filteredData = data.replace('\'@/app/globals\'', `'${config.aliases.globals}'`);
+        filteredData.replace('\'@/lib/darken\'', path.join(config.aliases.lib, 'darken'));
+
         await fs.mkdir(componentsPath, {recursive: true});
         await fs.writeFile(componentsPath + components[component], data, 'utf-8');
         logger.event(`Finished creating component '${component}'`);

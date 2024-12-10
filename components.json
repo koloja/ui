@@ -1,4 +1,9 @@
 {
+    "button": "Button.tsx",
+    "card": "Card.tsx",
+    "checkbox": "Checkbox.tsx",
     "container": "Container.tsx",
-    "button": "Button.tsx"
+    "input": "Input.tsx",
+    "label": "Label.tsx",
+    "section": "Section.tsx"
 }
