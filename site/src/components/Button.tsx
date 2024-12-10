@@ -25,13 +25,13 @@ const variants: {[key in Exclude<ButtonProps['variant'], undefined>]: ReturnType
         &:hover {background-color: ${darken(styles.colors.destructive, 10)}}
     `,
     outline: css`
-        background-color: transparent;
+        background-color: inherit;
         color: ${styles.colors.text.default};
         border-color: ${styles.colors.border};
         &:hover {background-color: ${styles.colors.muted}}
     `,
     ghost: css`
-        background-color: transparent;
+        background-color: inherit;
         color: ${styles.colors.text.default};
         &:hover {background-color: ${styles.colors.muted}}
     `,
@@ -68,11 +68,6 @@ const Button = styled.button<ButtonProps>`
     font-size: .88rem;
     transition: all 200ms ease;
 
-    &:disabled {
-        pointer-events: none;
-        opacity: .5;
-    }
-
     svg {
         stroke-width: ${styles.values.line};
         pointer-events: none;
@@ -84,5 +79,6 @@ const Button = styled.button<ButtonProps>`
     ${(props) => variants[props.variant || 'primary']};
     ${(props) => sizes[props.size || 'medium']};
 `;
+Button.displayName = 'Button';
 
 export default Button;

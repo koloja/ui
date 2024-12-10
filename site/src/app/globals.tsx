@@ -1,5 +1,5 @@
 'use client';
-import {createGlobalStyle} from 'styled-components';
+import {createGlobalStyle, css} from 'styled-components';
 
 const styles = {
     colors: {
@@ -25,7 +25,7 @@ const styles = {
         }
     },
     values: {
-        radius: '.35rem',
+        radius: '.5rem',
         line: '.15rem',
         border: '.05rem'
     },
@@ -34,9 +34,9 @@ const styles = {
         mono: 'var(--font-geist-mono), monospace'
     },
     shadows: {
-        light: '0 0 .15rem .25rem #ffffff05',
-        medium: '0 0 .25rem .5rem #ffffff10',
-        heavy: '0 0 .38rem .75rem #ffffff15',
+        light: '0 0 .05rem .10rem #ffffff05',
+        medium: '0 0 .10rem .15rem #ffffff10',
+        heavy: '0 0 .15rem .20rem #ffffff15',
     }
 };
 
@@ -54,6 +54,7 @@ const Globals = createGlobalStyle`
 
     body {
         background-color: ${styles.colors.background};
+        color: ${styles.colors.text.default};
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
@@ -64,16 +65,14 @@ const Globals = createGlobalStyle`
     input:-webkit-autofill:active{
         -webkit-background-clip: text;
         -webkit-text-fill-color: #ffffff;
-        transition: background-color 5000s ease-in-out 0s;
+        transition: background-color 5000s ease 0s;
     }
 
     a {
-        text-decoration: none;
-        color: inherit;
-        text-decoration: underline .15em transparent;
-        transition: text-decoration-color 200ms ease;
+        position: relative;
+        cursor: pointer;
+        text-decoration: underline;
     }
-    a:hover {text-decoration-color: ${styles.colors.text.default}; color: ${styles.colors.text.default}}
 
     button {
         border: none;
@@ -88,6 +87,7 @@ const Globals = createGlobalStyle`
     h5 {font-size: 1.44rem}
     h6 {font-size: 1.2rem}
     p {font-size: 1rem}
+    b {font-weight: 600}
     span {font-size: 1rem}
     small {font-size: .88rem}
     h1, h2, h3, h4, h5, h6 {line-height: 1.15; font-weight: 700; letter-spacing: -.02rem}
