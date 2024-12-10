@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {styles} from '@/app/globals';
 import darken from '@/lib/darken';
 
-const Input = styled.input<{ className?: string }>`
+const Input = styled.input`
     flex: 1;
     height: 2.4rem;
     width: 100%;

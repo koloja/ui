@@ -29,8 +29,8 @@ const add = async (component: string | undefined) => {
         const componentsPath = path.join(realPath, config.aliases.components.split(filteredPath)[1]) + '\\';
         const globalsPath = path.join(realPath, config.aliases.globals.split(filteredPath)[1]);
 
-        const componentsExists = await exists(componentsLink + components[component]);
-        const globalsExists = await exists(globalsPath);
+        const componentsExists = await exists(componentsPath + components[component]);
+        const globalsExists = await exists(globalsPath + '.tsx');
         if (componentsExists) throw new Error('Component already exists.');
 
         //// console.log('globals:', globalsPath);
@@ -41,11 +41,13 @@ const add = async (component: string | undefined) => {
         const response = await fetch(componentsLink + components[component]);
         const data = await response.text();
 
-        let filteredData = data.replace('\'@/app/globals\'', `'${config.aliases.globals}'`);
-        filteredData.replace('\'@/lib/darken\'', path.join(config.aliases.lib, 'darken'));
+        // TODO: Redo this whole part (and the whole file)
+        const filteredData = data
+        .replace('@/app/globals', config.aliases.globals.replace(/\\+/g, '/'))
+        .replace('@/lib', config.aliases.lib.replace(/\\+/g, '/'));
 
         await fs.mkdir(componentsPath, {recursive: true});
-        await fs.writeFile(componentsPath + components[component], data, 'utf-8');
+        await fs.writeFile(componentsPath + components[component], filteredData, 'utf-8');
         logger.event(`Finished creating component '${component}'`);
     } catch (error) {
         if (error instanceof Error) {
