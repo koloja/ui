@@ -69,6 +69,7 @@ const Globals = createGlobalStyle`
     }
 
     a {
+        color: inherit;
         position: relative;
         cursor: pointer;
         text-decoration: underline;
