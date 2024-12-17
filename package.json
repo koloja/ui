@@ -5,7 +5,7 @@
         "build": "turbo build",
         "dev": "turbo dev",
         "lint": "turbo lint",
-        "format": "prettier --write \"**/*.{ts,tsx,md}\""
+        "format": "echo \"Fuck prettier.\""
     },
     "devDependencies": {
         "prettier": "^3.2.5",
@@ -13,9 +13,9 @@
         "typescript": "5.5.4"
     },
     "engines": {
-        "node": ">=20"
+        "node": "^20.17.0 || >=22.9.0"
     },
-    "packageManager": "npm@10.9.2",
+    "packageManager": "npm@11.0.0",
     "workspaces": [
         "apps/*",
         "packages/*"
