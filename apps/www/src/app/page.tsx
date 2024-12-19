@@ -1,5 +1,5 @@
 import React from 'react';
-import {styled} from '../../styled-system/jsx';
+import {styled} from 'styled-system/jsx';
 
 const Span = styled.span`
     color: red;
