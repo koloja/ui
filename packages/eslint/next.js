@@ -5,11 +5,10 @@ import pluginReactHooks from 'eslint-plugin-react-hooks';
 import pluginReact from 'eslint-plugin-react';
 import globals from 'globals';
 import pluginNext from '@next/eslint-plugin-next';
-import {config as baseConfig} from './base.js';
+import baseConfig from './base.js';
 
-// Extends base / global config for Next.JS
 /** @type {import('eslint').Linter.Config} */
-export const nextJsConfig = [
+const nextConfig = [
     ...baseConfig,
     js.configs.recommended,
     eslintConfigPrettier,
@@ -34,3 +33,4 @@ export const nextJsConfig = [
         rules: {...pluginReactHooks.configs.recommended.rules, 'react/react-in-jsx-scope': 'off'}
     }
 ];
+export default nextConfig;

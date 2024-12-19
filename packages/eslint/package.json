@@ -1,11 +1,11 @@
 {
-    "name": "@local/eslint",
+    "name": "@repo/eslint",
     "version": "0.0.1",
     "type": "module",
     "private": true,
     "exports": {
         "./base": "./base.js",
-        "./next-js": "./next.js"
+        "./next": "./next.js"
     },
     "devDependencies": {
         "@next/eslint-plugin-next": "^15.1.0",
