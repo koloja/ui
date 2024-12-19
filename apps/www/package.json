@@ -1,0 +1,25 @@
+{
+    "name": "www",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "dev": "next dev -p 2121",
+        "build": "next build",
+        "start": "next start -p 8080",
+        "lint": "next lint",
+        "prepare": "panda codegen --clean"
+    },
+    "dependencies": {
+        "next": "15.1.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0"
+    },
+    "devDependencies": {
+        "@pandacss/dev": "^0.49.0",
+        "@repo/eslint": "0.0.1",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "typescript": "^5"
+    }
+}
